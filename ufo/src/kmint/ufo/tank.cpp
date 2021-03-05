@@ -2,6 +2,9 @@
 #include "kmint/graphics.hpp"
 #include "kmint/ufo/node_algorithm.hpp"
 #include "kmint/random.hpp"
+
+#include "kmint/ufo/global_tank_state.hpp"
+
 #include <iostream>
 
 namespace kmint::ufo {
@@ -21,16 +24,15 @@ graphics::image tank_image(tank_type t) {
 
 } // namespace
 
-tank::tank(map::map_graph& g, map::map_node& initial_node, tank_type t)
-	: play::map_bound_actor{ initial_node }, type_{t},
-	drawable_{ *this, graphics::image{tank_image(t)} } {}
+tank::tank(map::map_graph& g, map::map_node& initial_node, tank_type t) : state_user{g, initial_node, graphics::image{tank_image(t)}}
+{
+	state_machine_->SetGlobalState(global_tank_state::Instance());
+}
 
 void tank::act(delta_time dt) {
 	t_since_move_ += dt;
-	if (to_seconds(t_since_move_) >= 1) {
-		// pick random edge
-		int next_index = random_int(0, node().num_edges());
-		this->node(node()[next_index].to());
+	if (to_seconds(t_since_move_) >= waiting_time(node())) {
+		get_state_machine()->Update();
 		t_since_move_ = from_seconds(0);
 	}
 	// laat ook zien wat hij ziet

@@ -1,6 +1,8 @@
 #include "kmint/ufo/play.hpp"
 #include "kmint/main.hpp" // voor de main loop
 #include "kmint/play.hpp"
+#include "kmint/ufo/emp.hpp"
+#include "kmint/ufo/shield.hpp"
 #include "kmint/ufo/andre.hpp"
 #include "kmint/ufo/human.hpp"
 #include "kmint/ufo/resources.hpp"
@@ -37,6 +39,13 @@ int play() {
     s.build_actor<ufo::human>();
   }
 
+  s.build_actor<ufo::emp>(graph, ufo::random_node_of_kind(m, 'R'));
+  s.build_actor<ufo::emp>(graph, ufo::random_node_of_kind(m, 'R'));
+  s.build_actor<ufo::emp>(graph, ufo::random_node_of_kind(m, 'R'));
+  
+  s.build_actor<ufo::shield>(graph, ufo::random_node_of_kind(m, 'R'));
+  s.build_actor<ufo::shield>(graph, ufo::random_node_of_kind(m, 'R'));
+  s.build_actor<ufo::shield>(graph, ufo::random_node_of_kind(m, 'R'));
 
   s.build_actor<ufo::tank>(graph, ufo::random_node_of_kind(m, 'T'), tank_type::red);
   s.build_actor<ufo::tank>(graph, ufo::random_node_of_kind(m, 'T'), tank_type::green);

@@ -3,3 +3,6 @@
 .ccls-cache
 build/
 compile_commands.json
+*.ipch
+*.db
+*.opendb

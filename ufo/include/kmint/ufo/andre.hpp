@@ -27,6 +27,12 @@ private:
 	delta_time t_since_move_{};
 	// weet hoe de koe getekend moet worden
 	play::image_drawable drawable_;
+	map::map_graph* graph_;
+	
+	char current_target_ = '1';
+	std::vector<int> path_;
+
+
 };
 
 } // namespace kmint::ufo

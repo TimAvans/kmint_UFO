@@ -2,7 +2,6 @@
 cmake_policy(SET CMP0048 NEW)
 cmake_minimum_required(VERSION 3.8)
 
-
 # This ensures both SDL2 and SDL2_image are known in both projects.
 # Although kmintapp can be built without these two packages being found,
 # it helps with gathering all variables required for a runnable kmintapp

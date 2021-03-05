@@ -18,7 +18,16 @@ add_library(ufo-common STATIC
   src/kmint/ufo/saucer.cpp
   src/kmint/ufo/human.cpp
   src/kmint/ufo/node_algorithm.cpp
-  src/kmint/ufo/play.cpp)
+  src/kmint/ufo/play.cpp
+  src/kmint/ufo/AI/astar.cpp
+  src/kmint/ufo/AI/StateMachine/state_user.cpp
+  src/kmint/ufo/AI/StateMachine/wander_state.cpp
+  src/kmint/ufo/AI/StateMachine/flee_state.cpp
+  src/kmint/ufo/AI/StateMachine/target_state.cpp
+  src/kmint/ufo/AI/StateMachine/global_tank_state.cpp
+  src/kmint/ufo/emp.cpp
+  src/kmint/ufo/shield.cpp
+  )
 
 target_compile_features(ufo-common PUBLIC cxx_std_17)
 target_link_libraries(ufo-common PRIVATE kmint)
